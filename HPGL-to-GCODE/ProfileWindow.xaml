@@ -1,0 +1,26 @@
+﻿<Window x:Class="HPGL_to_GCODE.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Profiles" Height="250" Width="380" WindowStartupLocation="CenterScreen" MinWidth="380" MinHeight="250" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Column="0" Grid.RowSpan="2" Margin="5,10" Name="ProfileListBox" />
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5">
+            <Button  Name="NewProfileButton" Margin="2,3" Padding="5" Content="Create new profile" Click="NewProfileButton_Click" />
+            <Button  Name="EditProfileButton" Margin="2,3" Padding="5" Content="Edit profile" Click="EditProfileButton_Click" />
+            <Button Name="DuplicateProfileButton" Margin="2,3" Padding="3" Content="Duplicate profile" Click="DuplicateProfileButton_Click"/>
+            <Button  Name="DeleteProfileButton" Margin="2,3" Padding="5" Content="Delete profile" Click="DeleteProfileButton_Click" />
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="1" Name="ChooseProfileButton" Margin="10" Padding="5" Content="Use selected profile" VerticalAlignment="Bottom" Click="ChooseProfileButton_Click"/>
+    </Grid>
+</Window>

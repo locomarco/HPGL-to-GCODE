@@ -1,0 +1,55 @@
+﻿<Window x:Class="HPGL_to_GCODE.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Settings" Height="500" Width="500" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid VerticalAlignment="Center" Margin="10,10,10,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Name="LabelStack" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="nameLabel" Content="Profile name:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="xOffsetLabel" Content="X-axis offset [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="yOffsetLabel" Content="Y-axis offset [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="feedrateLabel" Content="feedrate [mm/s]:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="materialThicknessLabel" Content="material thickness [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="paperThicknessLabel" Content="carrying paper thickness [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="paperPenetrationLabel" Content="carrying paper penetration [%]:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="safeDistanceLabel" Content="Z safe distance [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="endstopOffsetLabel" Content="cutting surface offset (along Z) [mm]:" />
+        </StackPanel>
+        
+        <StackPanel Name="TextBoxStack" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="nameTextBox" Text="TextBox" Width="120" />
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="xOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="yOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+            <StackPanel Orientation="Horizontal" >
+                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" x:Name="feedrateTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+                <Label HorizontalAlignment="Left" x:Name="label2" Content="{}{feed}" FontSize="10" Foreground="Gray"/>
+            </StackPanel>
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="materialThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" />
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="paperThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" />
+            <ComboBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="paperPenetrationComboBox" Width="120" PreviewTextInput="NumberValidation" />
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="safeDistanceTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="endstopOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+        </StackPanel>
+
+        <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="label_Copy2" Content="Startcode:" />
+        <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="label_Copy3" Content="Endcode:" />
+        <TextBox Grid.Column="0" Grid.Row="2" x:Name="startCodeTextBox" Height="111" Text="TextBox" Width="160" AcceptsReturn="True"/>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="endCodeTextBox" Height="111" Text="TextBox" Width="160" AcceptsReturn="True"/>
+
+        <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="5,20,5,5" Padding="24,6,24,6" x:Name="button" HorizontalAlignment="Center" Content="update settings" Click="button_Click"/>
+    </Grid>
+</Window>
