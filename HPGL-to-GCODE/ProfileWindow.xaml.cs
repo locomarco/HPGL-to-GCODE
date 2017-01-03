@@ -144,5 +144,13 @@ namespace HPGL_to_GCODE
             manager.Profiles.Add(duplicateProfile);
             showSettingsWindow(duplicateProfile);
         }
+
+        private void MetroWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

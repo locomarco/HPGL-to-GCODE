@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HPGL_to_GCODE
@@ -24,13 +25,13 @@ namespace HPGL_to_GCODE
                 paperPenetrationComboBox.Items.Add(i * 10);
             }
         }
-        
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             nameTextBox.Text = _profile.Profilename;
             feedrateTextBox.Text = _profile.Feedrate.ToString();
             materialThicknessTextBox.Text = _profile.MaterialThickness.ToString();
-            paperThicknessTextBox.Text = _profile.PaperThickness.ToString();                 
+            paperThicknessTextBox.Text = _profile.PaperThickness.ToString();
             paperPenetrationComboBox.SelectedIndex = paperPenetrationComboBox.Items.Cast<int>().ToList().FindIndex(value => value == _profile.PaperPenetraion);
             safeDistanceTextBox.Text = _profile.SafeDistance.ToString();
             startCodeTextBox.Text = _profile.StartCode;
@@ -56,6 +57,20 @@ namespace HPGL_to_GCODE
         {
             Regex regex = new Regex("[^0-9.]+", RegexOptions.None);
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TextBox_SelectText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;            
+            textBox.SelectAll();
+        }
+
+        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
         }
     }
 }

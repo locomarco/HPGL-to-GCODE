@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         BorderThickness="0" GlowBrush="Black"
-        Title="Profiles" Height="250" Width="380" WindowStartupLocation="CenterScreen" MinWidth="380" MinHeight="250" Closing="Window_Closing">
+        Title="Profiles" Height="250" Width="380" WindowStartupLocation="CenterScreen" MinWidth="380" MinHeight="250" Closing="Window_Closing" KeyDown="MetroWindow_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>

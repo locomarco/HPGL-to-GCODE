@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         BorderThickness="0" GlowBrush="Black"
-        Title="Settings" Height="500" Width="500" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Settings" Height="500" Width="500" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" KeyDown="MetroWindow_KeyDown">
     <Grid VerticalAlignment="Center" Margin="10,10,10,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,19 +31,19 @@
         </StackPanel>
 
         <StackPanel Name="TextBoxStack" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="nameTextBox" Text="TextBox" Width="120" />
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="nameTextBox" Text="TextBox" Width="120"/>
             <StackPanel Orientation="Horizontal" >
-                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" x:Name="feedrateTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" x:Name="feedrateTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText"/>
                 <Label VerticalContentAlignment="Center" Content="{}{feed}" FontSize="10" Foreground="Gray"/>
             </StackPanel>
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="materialThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" />
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" />
-            <ComboBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperPenetrationComboBox" Width="120" PreviewTextInput="NumberValidation" />
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="materialThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" />
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" />
+            <ComboBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperPenetrationComboBox" Width="120" />
             <StackPanel Orientation="Horizontal">
-                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="safeDistanceTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="safeDistanceTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText"/>
                 <Label VerticalContentAlignment="Center" Content="{}{height}" FontSize="10" Foreground="Gray"/>
             </StackPanel>
-                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="endstopOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="endstopOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText"/>
         </StackPanel>
 
         <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="label_Copy2" Content="Startcode:" />
