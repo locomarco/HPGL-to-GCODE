@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace HPGL_to_GCODE
@@ -41,37 +39,6 @@ namespace HPGL_to_GCODE
 
                 return profiles;
             }
-        }
-    }
-
-    [Serializable]
-    public class Profile : ICloneable
-    {
-        [XmlAttribute]
-        public string Profilename { get; set; }
-        public float XOffset { get; set; }
-        public float YOffset { get; set; }
-        public float EndstopOffset { get; set; }
-        public float MaterialThickness { get; set; }
-        public float PaperThickness { get; set; }
-        public int PaperPenetraion { get; set; }
-        public float SafeDistance { get; set; }
-        public float Feedrate { get; set; }
-        public string StartCode { get; set; }
-        public string EndCode { get; set; }
-
-        public Profile()
-        {
-            Profilename = "New Profile";
-            XOffset = YOffset = EndstopOffset = 0;
-            MaterialThickness = PaperThickness = SafeDistance = 0;
-            PaperPenetraion = 50;
-            StartCode = EndCode = string.Empty;
-        }
-
-        public object Clone()
-        {
-            return MemberwiseClone();
         }
     }
 }
