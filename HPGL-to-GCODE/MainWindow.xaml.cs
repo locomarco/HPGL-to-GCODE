@@ -30,7 +30,7 @@ namespace HPGL_to_GCODE
         {
             InitializeComponent();
             manager = ProfileManager.LoadFromFile(xmlFile);
-            
+
             timer.Interval = TimeSpan.FromMilliseconds(50);
             timer.Tick += Timer_Tick;
 
@@ -46,7 +46,7 @@ namespace HPGL_to_GCODE
         {
             StreamReader reader = new StreamReader(filename);
             _hpgl = HPGL.Parse(reader.ReadToEnd());
-            UpdateSize();
+            UpdateInfos();
             DrawPath();
         }
 
@@ -76,7 +76,7 @@ namespace HPGL_to_GCODE
             float endstopOffset = p.EndstopOffset;
             float materialThickness = p.MaterialThickness;
             float paperThickness = p.PaperThickness;
-            float paperPenetration = p.PaperPenetraion / 100; 
+            float paperPenetration = p.PaperPenetraion / 100;
             float safeDistance = p.SafeDistance;
             float feedrate = p.Feedrate;
             string startCode = p.StartCode;
@@ -127,7 +127,7 @@ namespace HPGL_to_GCODE
             else
                 factor = (float)canvas1.ActualHeight / sizeY;
 
-            var rendered = RenderHPGL(_hpgl, factor, (float)canvas1.ActualHeight);
+            var rendered = RenderHpglToPath(_hpgl, factor, (float)canvas1.ActualHeight);
 
             int deltaChildren = canvas1.Children.Count - rendered.Length;
 
@@ -154,26 +154,36 @@ namespace HPGL_to_GCODE
             }
         }
 
-        private void UpdateSize()
+        private void UpdateInfos()
         {
+            int linecount = 0;
+            sizeX = sizeY = 0;
+
             foreach (var cmd in _hpgl.Commands)
             {
                 for (int i = 0; i < cmd.Coordinates.Count; i++)
                 {
                     sizeX = (float)Math.Max(sizeX, cmd.Coordinates[i].X);
                     sizeY = (float)Math.Max(sizeY, cmd.Coordinates[i].Y);
-                } 
+                    linecount++;
+                }
             }
 
-            double actualSizeX = Math.Ceiling(sizeX * resolution);
-            double actualSizeY = Math.Ceiling(sizeY * resolution);
+            double actualSizeX;
+            double actualSizeY;
 
             if (float.IsNaN(sizeX) || float.IsNaN(sizeY))
             {
                 actualSizeX = actualSizeY = 0;
             }
+            else
+            {
+                actualSizeX = Math.Ceiling(sizeX * resolution);
+                actualSizeY = Math.Ceiling(sizeY * resolution);
+            }
 
             sizeLabel.Content = string.Format("{0} x {1} mm", actualSizeX.ToString(), actualSizeY.ToString());
+            lineCountLabel.Content = linecount.ToString();
         }
 
         private WinShapes.Path DrawRect(float sizeX, float sizeY, float factor, float height)
@@ -196,7 +206,7 @@ namespace HPGL_to_GCODE
             return path;
         }
 
-        private WinShapes.Path[] RenderHPGL(HPGL hpgl, float factor, float height)
+        private WinShapes.Path[] RenderHpglToPath(HPGL hpgl, float factor, float height)
         {
             WinShapes.Path[] pathCollection = new WinShapes.Path[hpgl.Commands.Capacity + 1];
             pathCollection[0] = DrawRect(sizeX, sizeY, factor, height);
