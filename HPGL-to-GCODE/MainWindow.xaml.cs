@@ -1,4 +1,5 @@
 ﻿using HPGL_;
+using MahApps.Metro.Controls;
 using System;
 using System.Globalization;
 using System.IO;
@@ -14,7 +15,7 @@ namespace HPGL_to_GCODE
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         float sizeX = 0, sizeY = 0;
         string outputCode = string.Empty;

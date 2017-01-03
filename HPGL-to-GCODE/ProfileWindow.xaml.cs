@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
 
@@ -9,7 +8,7 @@ namespace HPGL_to_GCODE
     /// <summary>
     /// Interaktionslogik für ProfileWindow.xaml
     /// </summary>
-    public partial class ProfileWindow : Window
+    public partial class ProfileWindow
     {
         WindowMode mode;
         ProfileManager manager;

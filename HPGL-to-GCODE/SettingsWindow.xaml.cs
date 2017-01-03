@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -9,7 +8,7 @@ namespace HPGL_to_GCODE
     /// <summary>
     /// Interaktionslogik für Window1.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class SettingsWindow
     {
         Profile _profile;
         Profile _hblasdfl = new Profile();
