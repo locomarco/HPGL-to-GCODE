@@ -20,8 +20,6 @@
 
         <StackPanel Name="LabelStack" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
             <Label HorizontalAlignment="Right" Margin="2,0" x:Name="nameLabel" Content="Profile name:" />
-            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="xOffsetLabel" Content="X-axis offset [mm]:" />
-            <Label HorizontalAlignment="Right" Margin="2,0" x:Name="yOffsetLabel" Content="Y-axis offset [mm]:" />
             <Label HorizontalAlignment="Right" Margin="2,0" x:Name="feedrateLabel" Content="feedrate [mm/s]:" />
             <Label HorizontalAlignment="Right" Margin="2,0" x:Name="materialThicknessLabel" Content="material thickness [mm]:" />
             <Label HorizontalAlignment="Right" Margin="2,0" x:Name="paperThicknessLabel" Content="carrying paper thickness [mm]:" />
@@ -29,11 +27,9 @@
             <Label HorizontalAlignment="Right" Margin="2,0" x:Name="safeDistanceLabel" Content="Z safe distance [mm]:" />
             <Label HorizontalAlignment="Right" Margin="2,0" x:Name="endstopOffsetLabel" Content="cutting surface offset (along Z) [mm]:" />
         </StackPanel>
-        
+
         <StackPanel Name="TextBoxStack" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
             <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="nameTextBox" Text="TextBox" Width="120" />
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="xOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" VerticalContentAlignment="Center" x:Name="yOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
             <StackPanel Orientation="Horizontal" >
                 <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="3" x:Name="feedrateTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
                 <Label HorizontalAlignment="Left" x:Name="label2" Content="{}{feed}" FontSize="10" Foreground="Gray"/>

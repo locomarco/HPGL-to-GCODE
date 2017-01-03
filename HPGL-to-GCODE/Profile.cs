@@ -10,8 +10,6 @@ namespace HPGL_to_GCODE
     {
         [XmlAttribute]
         public string Profilename { get; set; }
-        public float XOffset { get; set; }
-        public float YOffset { get; set; }
         public float EndstopOffset { get; set; }
         public float MaterialThickness { get; set; }
         public float PaperThickness { get; set; }
@@ -24,8 +22,7 @@ namespace HPGL_to_GCODE
         public Profile()
         {
             Profilename = "New Profile";
-            XOffset = YOffset = EndstopOffset = 0;
-            MaterialThickness = PaperThickness = SafeDistance = 0;
+            EndstopOffset = MaterialThickness = PaperThickness = SafeDistance = 0;
             PaperPenetraion = 50;
             StartCode = EndCode = string.Empty;
         }
