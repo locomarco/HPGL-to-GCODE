@@ -34,13 +34,16 @@
             <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="nameTextBox" Text="TextBox" Width="120" />
             <StackPanel Orientation="Horizontal" >
                 <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" x:Name="feedrateTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
-                <Label HorizontalAlignment="Left" x:Name="label2" Content="{}{feed}" FontSize="10" Foreground="Gray"/>
+                <Label VerticalContentAlignment="Center" Content="{}{feed}" FontSize="10" Foreground="Gray"/>
             </StackPanel>
             <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="materialThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" />
             <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" />
             <ComboBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperPenetrationComboBox" Width="120" PreviewTextInput="NumberValidation" />
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="safeDistanceTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="endstopOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="safeDistanceTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
+                <Label VerticalContentAlignment="Center" Content="{}{height}" FontSize="10" Foreground="Gray"/>
+            </StackPanel>
+                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="endstopOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation"/>
         </StackPanel>
 
         <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="label_Copy2" Content="Startcode:" />

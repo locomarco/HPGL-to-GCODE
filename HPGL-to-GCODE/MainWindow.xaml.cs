@@ -86,6 +86,7 @@ namespace HPGL_to_GCODE
 
             if (startCode.Length > 0)
             {
+                startCode = startCode.Replace("{height}", (endstopOffset + materialThickness + safeDistance).ToString());
                 startCode = startCode.Replace("{feed}", (feedrate * 60).ToString());
                 GCode.AppendLine(startCode);
             }
