@@ -12,7 +12,6 @@ namespace HPGL_to_GCODE
         public string Profilename { get; set; }
 
         public float EndstopOffset { get; set; }
-        public float MaterialThickness { get; set; }
         public float PaperThickness { get; set; }
         public int PaperPenetraion { get; set; }
         public float SafeDistance { get; set; }
@@ -26,7 +25,6 @@ namespace HPGL_to_GCODE
             Profilename = "New Profile";
             EndstopOffset = 0;
             Feedrate = 50;
-            MaterialThickness = 0.3f;
             PaperThickness = 0.1f;
             SafeDistance = 1;
             PaperPenetraion = 50;

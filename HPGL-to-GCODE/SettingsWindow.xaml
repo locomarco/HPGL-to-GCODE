@@ -23,7 +23,6 @@
         <StackPanel Name="LabelStack" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="nameLabel" Content="Profile name:" />
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="feedrateLabel" Content="feedrate [mm/s]:" />
-            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="materialThicknessLabel" Content="material thickness [mm]:" />
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="paperThicknessLabel" Content="carrying paper thickness [mm]:" />
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="paperPenetrationLabel" Content="carrying paper penetration [%]:" />
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="safeDistanceLabel" Content="Z safe distance [mm]:" />
@@ -36,7 +35,6 @@
                 <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" x:Name="feedrateTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText"/>
                 <Label VerticalContentAlignment="Center" Content="{}{feed}" FontSize="10" Foreground="Gray"/>
             </StackPanel>
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="materialThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" />
             <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" />
             <ComboBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperPenetrationComboBox" Width="120" />
             <StackPanel Orientation="Horizontal">

@@ -12,7 +12,6 @@ namespace HPGL_to_GCODE
     public partial class SettingsWindow
     {
         Profile _profile;
-        Profile _hblasdfl = new Profile();
 
         public SettingsWindow(Profile profile)
         {
@@ -30,7 +29,6 @@ namespace HPGL_to_GCODE
         {
             nameTextBox.Text = _profile.Profilename;
             feedrateTextBox.Text = _profile.Feedrate.ToString();
-            materialThicknessTextBox.Text = _profile.MaterialThickness.ToString();
             paperThicknessTextBox.Text = _profile.PaperThickness.ToString();
             paperPenetrationComboBox.SelectedIndex = paperPenetrationComboBox.Items.Cast<int>().ToList().FindIndex(value => value == _profile.PaperPenetraion);
             safeDistanceTextBox.Text = _profile.SafeDistance.ToString();
@@ -43,7 +41,6 @@ namespace HPGL_to_GCODE
         {
             _profile.Profilename = nameTextBox.Text;
             _profile.Feedrate = float.Parse(feedrateTextBox.Text);
-            _profile.MaterialThickness = float.Parse(materialThicknessTextBox.Text);
             _profile.PaperThickness = float.Parse(paperThicknessTextBox.Text);
             _profile.PaperPenetraion = (int)(paperPenetrationComboBox.SelectedValue ?? _profile.PaperPenetraion);
             _profile.SafeDistance = float.Parse(safeDistanceTextBox.Text);
