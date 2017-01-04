@@ -77,10 +77,10 @@ namespace HPGL_to_GCODE
                 switch (command.Instruction)
                 {
                     case HPGL.Instruction.PU:
-                        GCode.AppendLine($"G1 Z{zHeightUp}");
+                        GCode.AppendLine($"G1 Z{Math.Round(zHeightUp, 3)}");
                         break;
                     case HPGL.Instruction.PD:
-                        GCode.AppendLine($"G1 Z{zHeightDown}");
+                        GCode.AppendLine($"G1 Z{Math.Round(zHeightDown, 3)}");
                         break;
                 }
 
@@ -89,7 +89,7 @@ namespace HPGL_to_GCODE
                     float x = (float)command.Coordinates[i].X * resolution;
                     float y = (float)command.Coordinates[i].Y * resolution;
 
-                    GCode.AppendLine($"G1 X{x} Y{y}");
+                    GCode.AppendLine($"G1 X{Math.Round(x, 3)} Y{Math.Round(y, 3)}");
                 }
             }
 
