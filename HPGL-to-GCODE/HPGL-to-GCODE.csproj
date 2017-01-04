@@ -70,7 +70,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon2.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro, Version=1.4.0.42, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
@@ -102,7 +102,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="HPGLParser.cs" />
+    <Compile Include="HPGL.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
@@ -165,7 +165,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon2.ico" />
+    <Resource Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

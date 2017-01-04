@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 
-namespace HPGL_
+namespace HPGL_to_GCODE
 {
     public class HPGL
     {

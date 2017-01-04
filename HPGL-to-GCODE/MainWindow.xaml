@@ -6,6 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         BorderThickness="0" GlowBrush="Black"
+        Icon="icon.ico"
         Title="HPGL to GCODE Converter" Height="600" Width="630" SizeChanged="Window_SizeChanged" MinHeight="600" MinWidth="630" WindowStartupLocation="CenterScreen">
     <Grid Margin="10,0,10,5">
         <Grid.ColumnDefinitions>
