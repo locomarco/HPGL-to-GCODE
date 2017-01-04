@@ -95,7 +95,7 @@ namespace HPGL_to_GCODE
             if (ProfileListBox.SelectedIndex == -1)
                 return;
 
-            if (MessageBoxResult.Yes == 
+            if (MessageBoxResult.Yes ==
                 MessageBox.Show("Are you sure to remove the selected Profile?", "Please confirm", MessageBoxButton.YesNo, MessageBoxImage.Question))
             {
                 manager.Profiles.RemoveAt(ProfileListBox.SelectedIndex);
@@ -105,23 +105,29 @@ namespace HPGL_to_GCODE
 
         private void UpdateListBox(List<Profile> profiles)
         {
+            int selectedIndex = ProfileListBox.SelectedIndex;
             ProfileListBox.Items.Clear();
+
             foreach (var profile in profiles)
-            {
                 ProfileListBox.Items.Add(profile.Profilename);
-            } 
+
+            if (selectedIndex > ProfileListBox.Items.Count - 1)
+                ProfileListBox.SelectedIndex = ProfileListBox.Items.Count - 1;
+            else
+                ProfileListBox.SelectedIndex = selectedIndex;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (mode == WindowMode.EditData)
-            {
                 manager.SaveToFile();
-            }
         }
 
         private void ChooseProfileButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ProfileListBox.SelectedIndex == -1)
+                return;
+
             SelectedProfile = profileList[ProfileListBox.SelectedIndex];
             Close();
         }
@@ -140,9 +146,7 @@ namespace HPGL_to_GCODE
         private void MetroWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Escape)
-            {
                 Close();
-            }
         }
     }
 }

@@ -107,26 +107,24 @@ namespace HPGL_to_GCODE
             else
                 factor = (float)canvas1.ActualHeight / sizeY;
 
-            var rendered = RenderHpglToPath(_hpgl, factor, (float)canvas1.ActualHeight);
+            WinShapes.Path[] rendered = RenderHpglToPath(_hpgl, factor, (float)canvas1.ActualHeight);
 
             int deltaChildren = canvas1.Children.Count - rendered.Length;
 
             if (deltaChildren > 0)
-            {
                 canvas1.Children.RemoveRange(0, deltaChildren);
-            }
+
             else if (deltaChildren < 0)
             {
                 for (int i = 0; i < Math.Abs(deltaChildren); i++)
-                {
                     canvas1.Children.Add(new WinShapes.Path());
-                }
             }
 
             for (int i = 0; i < rendered.Length - 1; i++)
             {
                 if (rendered[i] == null)
                     continue;
+
                 ((WinShapes.Path)canvas1.Children[i]).Data = rendered[i].Data;
                 ((WinShapes.Path)canvas1.Children[i]).Stroke = rendered[i].Stroke;
                 ((WinShapes.Path)canvas1.Children[i]).StrokeThickness = rendered[i].StrokeThickness;
@@ -153,9 +151,8 @@ namespace HPGL_to_GCODE
             double actualSizeY;
 
             if (float.IsNaN(sizeX) || float.IsNaN(sizeY))
-            {
                 actualSizeX = actualSizeY = 0;
-            }
+
             else
             {
                 actualSizeX = Math.Ceiling(sizeX * resolution);
@@ -247,7 +244,7 @@ namespace HPGL_to_GCODE
 
         private void selectFileButton_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog()
+            var fileDialog = new Microsoft.Win32.OpenFileDialog()
             {
                 DefaultExt = ".hpgl",
                 Filter = "HPGL Files (.hpgl)|*.hpgl"
@@ -262,8 +259,8 @@ namespace HPGL_to_GCODE
 
         private void settingsButton_Click(object sender, RoutedEventArgs e)
         {
-            ProfileWindow profiles = new ProfileWindow(manager, ProfileWindow.WindowMode.EditData);
-            profiles.ShowDialog();
+            ProfileWindow window = new ProfileWindow(manager, ProfileWindow.WindowMode.EditData);
+            window.ShowDialog();
         }
 
         private void saveGcodeButton_Click(object sender, RoutedEventArgs e)
@@ -274,23 +271,18 @@ namespace HPGL_to_GCODE
             if (_hpgl.Commands.Count > 0)
             {
                 if (manager.Profiles.Count == 1)
-                {
                     profile = manager.Profiles[0];
-                }
+
                 else
                 {
                     if (manager.Profiles.Count == 0)
-                    {
                         MessageBox.Show("Please configure a new profile.");
-                    }
 
                     ProfileWindow window = new ProfileWindow(manager, ProfileWindow.WindowMode.SelectData);
                     window.ShowDialog();
 
                     if (manager.Profiles.Count == 0)
-                    {
                         return;
-                    }
 
                     profile = window.SelectedProfile;
                 }
@@ -309,7 +301,7 @@ namespace HPGL_to_GCODE
             if (outputCode.Length > 0)
             {
                 string outFileName = hpglfile.Substring(hpglfile.LastIndexOf("\\") + 1);
-                Microsoft.Win32.SaveFileDialog fileDialog = new Microsoft.Win32.SaveFileDialog()
+                var fileDialog = new Microsoft.Win32.SaveFileDialog()
                 {
                     DefaultExt = ".gcode",
                     Filter = "GCODE Files (.gcode)|*.gcode",

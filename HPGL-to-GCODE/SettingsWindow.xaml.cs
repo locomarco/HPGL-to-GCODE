@@ -19,10 +19,8 @@ namespace HPGL_to_GCODE
             ResizeMode = ResizeMode.NoResize;
             _profile = profile;
 
-            for (int i = 1; i <= 9; i++)
-            {
-                paperPenetrationComboBox.Items.Add(i * 10);
-            }
+            for (int i = 10; i <= 90; i += 10)
+                paperPenetrationComboBox.Items.Add(i);         
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
