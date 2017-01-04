@@ -56,13 +56,14 @@ namespace HPGL_to_GCODE
 
             float endstopOffset = profile.EndstopOffset;
             float paperThickness = profile.PaperThickness;
-            float paperPenetration = profile.PaperPenetraion / 100;
+            float paperPenetration = profile.PaperPenetraion / 100.0f;
             float safeDistance = profile.SafeDistance;
             float feedrate = profile.Feedrate;
             string startCode = profile.StartCode;
             string endCode = profile.EndCode;
 
-            float depthOfCut = paperThickness + (paperThickness * paperPenetration);
+            float zHeightUp = endstopOffset + safeDistance;
+            float zHeightDown = endstopOffset + paperThickness - (paperThickness * paperPenetration);
 
             if (startCode.Length > 0)
             {
@@ -76,10 +77,10 @@ namespace HPGL_to_GCODE
                 switch (command.Instruction)
                 {
                     case HPGL.Instruction.PU:
-                        GCode.AppendLine($"G1 Z{endstopOffset + safeDistance}");
+                        GCode.AppendLine($"G1 Z{zHeightUp}");
                         break;
                     case HPGL.Instruction.PD:
-                        GCode.AppendLine($"G1 Z{endstopOffset + depthOfCut}");
+                        GCode.AppendLine($"G1 Z{zHeightDown}");
                         break;
                 }
 
