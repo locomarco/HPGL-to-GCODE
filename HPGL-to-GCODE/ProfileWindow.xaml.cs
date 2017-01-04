@@ -42,10 +42,6 @@ namespace HPGL_to_GCODE
         {
             if (mode == WindowMode.SelectData)
             {
-                NewProfileButton.Visibility = Visibility.Hidden;
-                EditProfileButton.Visibility = Visibility.Hidden;
-                DuplicateProfileButton.Visibility = Visibility.Hidden;
-                DeleteProfileButton.Visibility = Visibility.Hidden;
                 ChooseProfileButton.Visibility = Visibility.Visible;
 
                 ProfileListBox.MouseDoubleClick -= EditProfileButton_Click;
@@ -53,10 +49,6 @@ namespace HPGL_to_GCODE
             }
             else
             {
-                NewProfileButton.Visibility = Visibility.Visible;
-                EditProfileButton.Visibility = Visibility.Visible;
-                DuplicateProfileButton.Visibility = Visibility.Visible;
-                DeleteProfileButton.Visibility = Visibility.Visible;
                 ChooseProfileButton.Visibility = Visibility.Hidden;
 
                 ProfileListBox.MouseDoubleClick -= ChooseProfileButton_Click;
