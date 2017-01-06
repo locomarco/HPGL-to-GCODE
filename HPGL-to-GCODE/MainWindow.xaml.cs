@@ -56,18 +56,22 @@ namespace HPGL_to_GCODE
             float endstopOffset = profile.EndstopOffset;
             float paperThickness = profile.PaperThickness;
             float paperPenetration = profile.PaperPenetraion / 100.0f;
-            float safeDistance = profile.SafeDistance;
-            float feedrate = profile.Feedrate;
+            float vinylThickness = profile.VinylThickness;          
+            float cutFeedrate = profile.CutFeedrate;
+            float moveFeedrate = profile.MoveFeedrate;
+            float retractHeight = profile.RetractHeight;
             string startCode = profile.StartCode;
             string endCode = profile.EndCode;
 
-            float zHeightUp = endstopOffset + safeDistance;
-            float zHeightDown = endstopOffset + paperThickness - (paperThickness * paperPenetration);
+            float retractZPos = endstopOffset + paperThickness + vinylThickness + retractHeight;
+            float cutZPos = endstopOffset + paperThickness - (paperThickness * paperPenetration);
+            float travelFeed = moveFeedrate * 60;
+            float cuttingFeed = cutFeedrate * 60;
 
             if (startCode.Length > 0)
             {
-                startCode = startCode.Replace("{height}", (endstopOffset + safeDistance).ToString());
-                startCode = startCode.Replace("{feed}", (feedrate * 60).ToString());
+                startCode = startCode.Replace("{height}", retractZPos.ToString());
+                startCode = startCode.Replace("{feed}", travelFeed.ToString());
                 GCode.AppendLine(startCode);
             }
 
@@ -76,10 +80,10 @@ namespace HPGL_to_GCODE
                 switch (command.Instruction)
                 {
                     case HPGL.Instruction.PU:
-                        GCode.AppendLine($"G1 Z{Math.Round(zHeightUp, 3)}");
+                        GCode.AppendLine($"G1 Z{Math.Round(retractZPos, 3)} F{travelFeed}");
                         break;
                     case HPGL.Instruction.PD:
-                        GCode.AppendLine($"G1 Z{Math.Round(zHeightDown, 3)}");
+                        GCode.AppendLine($"G1 Z{Math.Round(cutZPos, 3)} F{cuttingFeed}");
                         break;
                 }
 

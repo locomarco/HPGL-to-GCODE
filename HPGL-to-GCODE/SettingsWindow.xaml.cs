@@ -26,22 +26,26 @@ namespace HPGL_to_GCODE
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             nameTextBox.Text = _profile.Profilename;
-            feedrateTextBox.Text = _profile.Feedrate.ToString();
-            paperThicknessTextBox.Text = _profile.PaperThickness.ToString();
+            cutFeedrateTextBox.Text = _profile.CutFeedrate.ToString();
+            moveFeedrateTextBox.Text = _profile.MoveFeedrate.ToString();
+            paperThicknessTextBox.Text = _profile.PaperThickness.ToString("0.00");
+            vinylThicknessTextBox.Text = _profile.VinylThickness.ToString("0.00");
             paperPenetrationComboBox.SelectedIndex = paperPenetrationComboBox.Items.Cast<int>().ToList().FindIndex(value => value == _profile.PaperPenetraion);
-            safeDistanceTextBox.Text = _profile.SafeDistance.ToString();
+            safeDistanceTextBox.Text = _profile.RetractHeight.ToString("0.0");
             startCodeTextBox.Text = _profile.StartCode;
             endCodeTextBox.Text = _profile.EndCode;
-            endstopOffsetTextBox.Text = _profile.EndstopOffset.ToString();
+            endstopOffsetTextBox.Text = _profile.EndstopOffset.ToString("0.00");
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             _profile.Profilename = nameTextBox.Text;
-            _profile.Feedrate = float.Parse(feedrateTextBox.Text);
+            _profile.CutFeedrate = float.Parse(cutFeedrateTextBox.Text);
+            _profile.MoveFeedrate = float.Parse(moveFeedrateTextBox.Text);
             _profile.PaperThickness = float.Parse(paperThicknessTextBox.Text);
+            _profile.VinylThickness = float.Parse(vinylThicknessTextBox.Text);
             _profile.PaperPenetraion = (int)(paperPenetrationComboBox.SelectedValue ?? _profile.PaperPenetraion);
-            _profile.SafeDistance = float.Parse(safeDistanceTextBox.Text);
+            _profile.RetractHeight = float.Parse(safeDistanceTextBox.Text);
             _profile.StartCode = startCodeTextBox.Text;
             _profile.EndCode = endCodeTextBox.Text;
             _profile.EndstopOffset = float.Parse(endstopOffsetTextBox.Text);

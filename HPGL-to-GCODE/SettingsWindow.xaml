@@ -22,32 +22,33 @@
 
         <StackPanel Name="LabelStack" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="nameLabel" Content="Profile name:" />
-            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="feedrateLabel" Content="feedrate [mm/s]:" />
-            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="paperThicknessLabel" Content="carrying paper thickness [mm]:" />
-            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="paperPenetrationLabel" Content="carrying paper penetration [%]:" />
-            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="safeDistanceLabel" Content="Z safe distance [mm]:" />
-            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="endstopOffsetLabel" Content="cutting surface offset (along Z) [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="feedrateLabel" Content="Feedrates [mm/s]:" />
+            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="paperThicknessLabel" Content="Carrying paper thickness [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="vinylThicknessLabel" Content="Vinyl thickness [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="paperPenetrationLabel" Content="Carrying paper penetration [%]:" />
+            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="safeDistanceLabel" Content="Z retract height [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="endstopOffsetLabel" Content="Knife offset [mm]:" />
         </StackPanel>
 
         <StackPanel Name="TextBoxStack" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
             <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="nameTextBox" Text="TextBox" Width="120"/>
             <StackPanel Orientation="Horizontal" >
-                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" x:Name="feedrateTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText"/>
-                <Label VerticalContentAlignment="Center" Content="{}{feed}" FontSize="10" Foreground="Gray"/>
+                <TextBox HorizontalAlignment="Left" Margin="0,0.8,1,0.8" Padding="2" x:Name="cutFeedrateTextBox" Text="TextBox" Width="59" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" ToolTip="Determines the feedrate (speed) when the tool is CUTTING the vinyl sheet.&#x0A;Default: 50"/>
+                <TextBox HorizontalAlignment="Left" Margin="1,0.8,0,0.8" Padding="2" x:Name="moveFeedrateTextBox" Text="TextBox" Width="59" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" ToolTip="Determines the feedrate (speed) when the tool is MOVING ABOVE the material.&#x0A;Default: 200&#x0A;*replaces the {feed}-tag in startcode"/>
             </StackPanel>
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" />
-            <ComboBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperPenetrationComboBox" Width="120" />
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" ToolTip="Enter the thickness of the paper carrying the vinyl sticker sheet.&#x0A;Should be measured with a MICROMETER.&#x0A;Default: 0.10"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="vinylThicknessTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" ToolTip="This value is not neccessarily needed.&#x0A;But make sure to set RETRACT HEIGHT high enough, to not cut into material when the tool is doing travel moves.&#x0A;Default: 0.00" />
+            <ComboBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="paperPenetrationComboBox" Width="120" ToolTip="Determines how deep the knive is cutting into the carrying paper.&#x0A;You might need a deeper penetration value if the cutting surface is not perfectly flat.&#x0A;Default: 50" />
             <StackPanel Orientation="Horizontal">
-                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="safeDistanceTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText"/>
-                <Label VerticalContentAlignment="Center" Content="{}{height}" FontSize="10" Foreground="Gray"/>
+                <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="safeDistanceTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" ToolTip="Determines the height (Z-Position) for travel moves.&#x0A;Default: 1.0&#x0A;*replaces the {height}-tag in startcode"/>
             </StackPanel>
-            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="endstopOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,0.8" Padding="2" VerticalContentAlignment="Center" x:Name="endstopOffsetTextBox" Text="TextBox" Width="120" PreviewTextInput="NumberValidation" GotFocus="TextBox_SelectText" ToolTip="If the cutting blade's tip is not touching the surface when you move to Z=0, you can use this to correct the offset.&#x0a;Example: If the knife would be 0.1mm above the surface, enter -0.1&#x0A;Default: 0.00"/>
         </StackPanel>
 
         <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="label_Copy2" Content="Startcode:" />
         <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="label_Copy3" Content="Endcode:" />
-        <TextBox Grid.Column="0" Grid.Row="2" x:Name="startCodeTextBox" Height="111" Text="TextBox" Width="160" AcceptsReturn="True"/>
-        <TextBox Grid.Column="1" Grid.Row="2" x:Name="endCodeTextBox" Height="111" Text="TextBox" Width="160" AcceptsReturn="True"/>
+        <TextBox Grid.Column="0" Grid.Row="2" x:Name="startCodeTextBox" Height="111" Text="TextBox" Width="160" AcceptsReturn="True" ToolTip="This code is excecuted before the actual cutting begins."/>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="endCodeTextBox" Height="111" Text="TextBox" Width="160" AcceptsReturn="True" ToolTip="This code is excecuted after cutting is finished."/>
 
         <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="5,20,5,5" Padding="24,6,24,6" x:Name="button" HorizontalAlignment="Center" Content="update settings" Click="button_Click"/>
     </Grid>
