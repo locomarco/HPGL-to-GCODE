@@ -54,7 +54,7 @@ namespace HPGL_to_GCODE
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9.]+", RegexOptions.None);
+            Regex regex = new Regex("[^0-9.-]+", RegexOptions.None);
             e.Handled = regex.IsMatch(e.Text);
         }
 
