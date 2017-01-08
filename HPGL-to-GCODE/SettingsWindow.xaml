@@ -27,7 +27,7 @@
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="vinylThicknessLabel" Content="Vinyl thickness [mm]:" />
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="paperPenetrationLabel" Content="Carrying paper penetration [%]:" />
             <Label HorizontalAlignment="Right" Margin="2,2" x:Name="safeDistanceLabel" Content="Z retract height [mm]:" />
-            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="endstopOffsetLabel" Content="Knife offset [mm]:" />
+            <Label HorizontalAlignment="Right" Margin="2,2" x:Name="endstopOffsetLabel" Content="Z offset [mm]:" />
         </StackPanel>
 
         <StackPanel Name="TextBoxStack" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
