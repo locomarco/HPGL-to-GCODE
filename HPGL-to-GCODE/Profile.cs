@@ -4,7 +4,6 @@ using System.Xml.Serialization;
 
 namespace HPGL_to_GCODE
 {
-
     [Serializable]
     public class Profile : ICloneable
     {

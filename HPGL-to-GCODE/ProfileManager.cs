@@ -6,10 +6,12 @@ namespace HPGL_to_GCODE
 {
     public class ProfileManager
     {
-        List<Profile> _profiles = new List<Profile>();
+        private List<Profile> _profiles = new List<Profile>();
         public List<Profile> Profiles { get { return _profiles; } set { _profiles = value; } }
+
         [XmlIgnore]
         private static string _filename = string.Empty;
+
         //public string Filename { get; set; }
 
         public void SaveToFile()

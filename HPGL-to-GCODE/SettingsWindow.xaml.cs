@@ -11,7 +11,7 @@ namespace HPGL_to_GCODE
     /// </summary>
     public partial class SettingsWindow
     {
-        Profile _profile;
+        private Profile _profile;
 
         public SettingsWindow(Profile profile)
         {
@@ -20,7 +20,7 @@ namespace HPGL_to_GCODE
             _profile = profile;
 
             for (int i = 10; i <= 90; i += 10)
-                paperPenetrationComboBox.Items.Add(i);         
+                paperPenetrationComboBox.Items.Add(i);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace HPGL_to_GCODE
 
         private void TextBox_SelectText(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;            
+            TextBox textBox = sender as TextBox;
             textBox.SelectAll();
         }
 

@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -16,13 +15,13 @@ namespace HPGL_to_GCODE
     /// </summary>
     public partial class MainWindow
     {
-        float sizeX = 0, sizeY = 0;
-        HPGL _hpgl = new HPGL();
-        const float resolution = 0.025f;
-        DispatcherTimer timer = new DispatcherTimer();
-        ProfileManager manager;
-        string xmlFile = @".\profiles.xml";
-        string hpglfile = string.Empty;
+        private float sizeX = 0, sizeY = 0;
+        private HPGL _hpgl = new HPGL();
+        private const float resolution = 0.025f;
+        private DispatcherTimer timer = new DispatcherTimer();
+        private ProfileManager manager;
+        private string xmlFile = @".\profiles.xml";
+        private string hpglfile = string.Empty;
 
         public MainWindow()
         {
@@ -56,7 +55,7 @@ namespace HPGL_to_GCODE
             float endstopOffset = profile.EndstopOffset;
             float paperThickness = profile.PaperThickness;
             float paperPenetration = profile.PaperPenetraion / 100.0f;
-            float vinylThickness = profile.VinylThickness;          
+            float vinylThickness = profile.VinylThickness;
             float cutFeedrate = profile.CutFeedrate;
             float moveFeedrate = profile.MoveFeedrate;
             float retractHeight = profile.RetractHeight;
@@ -82,6 +81,7 @@ namespace HPGL_to_GCODE
                     case HPGL.Instruction.PU:
                         GCode.AppendLine($"G1 Z{Math.Round(retractZPos, 3)} F{travelFeed}");
                         break;
+
                     case HPGL.Instruction.PD:
                         GCode.AppendLine($"G1 Z{Math.Round(cutZPos, 3)} F{cuttingFeed}");
                         break;
@@ -117,7 +117,6 @@ namespace HPGL_to_GCODE
 
             if (deltaChildren > 0)
                 canvas1.Children.RemoveRange(0, deltaChildren);
-
             else if (deltaChildren < 0)
             {
                 for (int i = 0; i < Math.Abs(deltaChildren); i++)
@@ -156,7 +155,6 @@ namespace HPGL_to_GCODE
 
             if (float.IsNaN(sizeX) || float.IsNaN(sizeY))
                 actualSizeX = actualSizeY = 0;
-
             else
             {
                 actualSizeX = Math.Ceiling(sizeX * resolution);
@@ -201,7 +199,6 @@ namespace HPGL_to_GCODE
 
                 if (cmd.Instruction == HPGL.Instruction.Undefined)
                     continue;
-
                 else if (cmd.Instruction == HPGL.Instruction.PD)
                 {
                     path.Stroke = Brushes.Crimson;
@@ -276,7 +273,6 @@ namespace HPGL_to_GCODE
             {
                 if (manager.Profiles.Count == 1)
                     profile = manager.Profiles[0];
-
                 else
                 {
                     if (manager.Profiles.Count == 0)
